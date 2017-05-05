@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/fatih/color"
 	"github.com/google/go-github/github"
@@ -72,12 +73,10 @@ func listRepositories(user string, params *params) error {
 		}
 
 		for _, r := range starredRepos {
-			repo := *r.Repository
-			if !isEmpty(params.lang) && ((repo.Language == nil) || (*repo.Language != params.lang)) {
-				continue
+			repo := r.Repository
+			if isTargetLang(repo, params.lang) {
+				show(repo)
 			}
-
-			show(repo)
 		}
 
 		if res.NextPage == 0 {
@@ -97,7 +96,14 @@ func newGitHubClient() *github.Client {
 	return github.NewClient(oauth2.NewClient(context.Background(), ts))
 }
 
-func show(repo github.Repository) {
+func isTargetLang(r *github.Repository, lang string) bool {
+	if isEmpty(lang) {
+		return true
+	}
+	return (r.Language != nil) && (strings.ToLower(*r.Language) == strings.ToLower(lang))
+}
+
+func show(repo *github.Repository) {
 	fmt.Println("-----------------------------------------")
 	color.Green(*repo.HTMLURL)
 	if repo.Description != nil {
