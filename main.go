@@ -15,7 +15,7 @@ func main() {
 	app := cli.NewApp()
 	app.Version = "1.0"
 	app.Author = "monmaru"
-	app.UsageText = "Usage: $ ghstar <GitHub User Name>"
+	app.UsageText = "$ ghstar <GitHub User Name>"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:        "lang, l",

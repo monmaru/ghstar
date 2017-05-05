@@ -12,7 +12,7 @@ NAME:
    ghstar - A new cli application
 
 USAGE:
-   Usage: $ ghstar <GitHub User Name>
+   $ ghstar <GitHub User Name>
 
 VERSION:
    1.0
