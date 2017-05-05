@@ -80,11 +80,10 @@ func listRepositories(user string, params *params) error {
 		}
 
 		if res.NextPage == 0 {
-			break
+			return nil
 		}
 		opts.Page = res.NextPage
 	}
-	return nil
 }
 
 func newGitHubClient() *github.Client {
