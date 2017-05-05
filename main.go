@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/fatih/color"
 	"github.com/google/go-github/github"
 	"github.com/urfave/cli"
 	"golang.org/x/oauth2"
@@ -98,7 +99,7 @@ func newGitHubClient() *github.Client {
 
 func show(repo github.Repository) {
 	fmt.Println("-----------------------------------------")
-	fmt.Println(*repo.HTMLURL)
+	color.Green(*repo.HTMLURL)
 	if repo.Description != nil {
 		fmt.Println(*repo.Description)
 	}
