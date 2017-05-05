@@ -13,10 +13,9 @@ import (
 func main() {
 	var lang, sort, direction string
 	app := cli.NewApp()
-	app.Name = "ghstar"
 	app.Version = "1.0"
 	app.Author = "monmaru"
-	app.Usage = "Usage: $ ghstar <GitHub User Name>\nPlease see help for more details.\n"
+	app.UsageText = "Usage: $ ghstar <GitHub User Name>"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:        "lang, l",
@@ -38,7 +37,7 @@ func main() {
 	}
 	app.Action = func(c *cli.Context) error {
 		if c.NArg() == 0 {
-			fmt.Print(c.App.Usage)
+			fmt.Print(c.App.UsageText)
 			return nil
 		}
 

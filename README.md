@@ -1,4 +1,5 @@
 # ghstar [![Build Status](https://travis-ci.org/monmaru/ghstar.svg?branch=master)](https://travis-ci.org/monmaru/ghstar)
+CLI tool to list Github's starred repository.
 
 ## Installation
 ```
@@ -7,8 +8,11 @@ go get github.com/monmaru/ghstar
 
 ## Usage
 ```
+NAME:
+   ghstar - A new cli application
+
 USAGE:
-   ghstar [global options] command [command options] [arguments...]
+   Usage: $ ghstar <GitHub User Name>
 
 VERSION:
    1.0
