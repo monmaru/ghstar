@@ -23,8 +23,15 @@ func TestIsEmpty(t *testing.T) {
 }
 
 func TestShow(t *testing.T) {
-	temp := "dummy"
-	repo := &github.Repository{HTMLURL: &temp}
+	dummy := "dummy"
+	repo := &github.Repository{HTMLURL: &dummy}
+	show(repo)
+	repo.Description = &dummy
+	repo.Language = &dummy
+	c := 1
+	repo.StargazersCount = &c
+	repo.ForksCount = &c
+	repo.UpdatedAt = &github.Timestamp{}
 	show(repo)
 }
 

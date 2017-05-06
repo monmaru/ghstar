@@ -24,7 +24,7 @@ func listRepositories(user string, params *params) error {
 	opts.Page = 1
 	opts.PerPage = 50
 
-	for {
+	for opts.Page != 0 {
 		starredRepos, res, err := client.Activity.ListStarred(context.Background(), user, opts)
 		if err != nil {
 			return err
@@ -37,11 +37,9 @@ func listRepositories(user string, params *params) error {
 			}
 		}
 
-		if res.NextPage == 0 {
-			return nil
-		}
 		opts.Page = res.NextPage
 	}
+	return nil
 }
 
 func newGitHubClient() *github.Client {
